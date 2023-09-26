@@ -32,8 +32,7 @@ if [ -d ~/karel-the-robot ]; then
       exit 1
    fi
 fi
-cd ~
-git clone https://git.kpi.fei.tuke.sk/kpi/karel-the-robot.git > /dev/null
+git clone https://git.kpi.fei.tuke.sk/kpi/karel-the-robot.git ~/karel-the-robot> /dev/null
 if [ $? -eq 0 ]; then
    echo ---install Karel Files OK
 else
@@ -53,6 +52,7 @@ cmake .. > /dev/null
 sudo make
 sudo make install 
 make clean
+cd -
 rm -rf ~/karel-the-robot
 if [ $? -eq 0 ]; then
    echo ---install Karel complete 
@@ -73,8 +73,9 @@ if [ -d ~/karel_project ]; then
    fi
 fi
 mkdir ~/karel_project
-pwd
-cp -r ./src/karel_project/* ~/karel_project/
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+cp -r $SCRIPT_DIR/src/karel_project/* ~/karel_project/
 echo "succeful karel_project install search info in karel_project/guide.txt"
 echo "\\/\\/\\/\\/\\/"
+echo "use <cd ~/karel_project>"
 cat ~/karel_project/guide.txt
