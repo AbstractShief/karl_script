@@ -19,5 +19,7 @@ spustí prvú úlohu
 наприклад make karl1
 це запустить перше завдання
 
+go to ~/karel_project
+
 created by @AbstractShief - telegram 
 
